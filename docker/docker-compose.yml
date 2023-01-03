@@ -1,0 +1,33 @@
+version: '3'
+services:
+  db:
+    build: containers/mysql
+    env_file:
+      - ./environments/common.env
+      - ./environments/db.env
+    volumes:
+      - ../volumes/db/data:/var/lib/mysql
+  app:
+    build: containers/spring
+    env_file:
+      - ./environments/common.env
+      - ./environments/app.env
+      - ./environments/db.env
+    command: sh -c "./mvnw package && java $$JAVA_OPTS -jar target/demo-0.0.1-SNAPSHOT.jar"
+    volumes:
+      - ../volumes/app:/app
+      - ../volumes/app/.m2:/root/.m2
+    depends_on:
+      - db
+  web:
+    build: containers/nginx
+    env_file:
+      - ./environments/common.env
+    volumes:
+      - ../volumes/web/static:/usr/share/nginx/www/ # 静的ファイルはSpringBootのプロジェクトでは管理せず、Webサーバー側で管理ます。
+      - ../volumes/web/ssl:/etc/nginx/cert/
+      - ../volumes/web/log:/var/log/nginx/
+    ports:
+      - 443:443
+    depends_on:
+      - app
