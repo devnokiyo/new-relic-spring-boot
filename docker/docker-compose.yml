@@ -1,6 +1,7 @@
 version: '3'
 services:
   db:
+    platform: linux/amd64
     build: containers/mysql
     env_file:
       - ./environments/common.env
