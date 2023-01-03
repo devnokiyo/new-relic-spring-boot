@@ -2,7 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
 <meta charset="UTF-8">
+<!--/* ↓↓↓ APMエージェント手動インストゥルメント方式でNew Relic BrowserモニタリングのJavaScriptを挿入します ↓↓↓ */-->
 <div th:remove="tag" th:utext="${@NewRelic.getBrowserTimingHeader()}"></div>
+<!--/* ↑↑↑ APMエージェント手動インストゥルメント方式でNew Relic BrowserモニタリングのJavaScriptを挿入します ↑↑↑ */-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ポートフォリオサイト</title>
 <link rel="stylesheet" media="all" th:href="@{/css/ress.min.css}" />
@@ -97,6 +99,8 @@
 	<p id="pagetop">
 		<a href="#">TOP</a>
 	</p>
+<!--/* ↓↓↓ APMエージェント手動インストゥルメント方式でNew Relic BrowserモニタリングのJavaScriptを挿入します ↓↓↓ */-->
 	<div th:utext="${@NewRelic.getBrowserTimingFooter()}"></div>
+<!--/* ↑↑↑ APMエージェント手動インストゥルメント方式でNew Relic BrowserモニタリングのJavaScriptを挿入します ↑↑↑ */-->
 </body>
 </html>
