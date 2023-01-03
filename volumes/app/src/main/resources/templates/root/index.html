@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
 <meta charset="UTF-8">
-<div th:remove="tag" th:utext="${T(com.newrelic.api.agent.NewRelic).getBrowserTimingHeader()}"></div>
+<div th:remove="tag" th:utext="${@NewRelic.getBrowserTimingHeader()}"></div>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ポートフォリオサイト</title>
 <link rel="stylesheet" media="all" th:href="@{/css/ress.min.css}" />
@@ -97,6 +97,6 @@
 	<p id="pagetop">
 		<a href="#">TOP</a>
 	</p>
-	<div th:utext="${T(com.newrelic.api.agent.NewRelic).getBrowserTimingFooter()}"></div>
+	<div th:utext="${@NewRelic.getBrowserTimingFooter()}"></div>
 </body>
 </html>
