@@ -1,2 +1,11 @@
 .DS_Store
 /.metadata/
+
+### Service web logs
+volumes/web/log/*
+
+### Service app Maven Repository Cache
+volumes/app/.m2/*
+
+### Service db data
+volumes/db/data/*
